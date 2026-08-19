@@ -40,3 +40,56 @@
 <p>Treat unhealthy patients in each room. And check for the unhealthy patients in random room</p>
 <h3>STEP 5:</h3>
 <p>Measure the performance parameters: For each treatment performance incremented, for each movement performance decremented</p>
+
+## program
+```
+class VacuumCleanerAgent:
+    def __init__(self):
+        self.location = "A"  # Initial location (can be "A" or "B")
+        self.dirt_status = {"A": False, "B": False}  # Initial dirt status (False means no dirt)
+
+    def move_left(self):
+        if self.location == "B":
+            self.location = "A"
+
+    def move_right(self):
+        if self.location == "A":
+            self.location = "B"
+
+    def suck_dirt(self):
+        if self.dirt_status[self.location]:
+            self.dirt_status[self.location] = False
+            print(f"Sucked dirt in location {self.location}")
+
+    def do_nothing(self):
+        pass
+
+    def perform_action(self, action):
+        # Perform the specified action
+        if action == "left":
+            self.move_left()
+        elif action == "right":
+            self.move_right()
+        elif action == "suck":
+            self.suck_dirt()
+        elif action == "nothing":
+            self.do_nothing()
+        else:
+            print("Invalid action")
+
+    def print_status(self):
+        print(f"Location: {self.location}, Dirt Status: {self.dirt_status}")
+agent = VacuumCleanerAgent()
+
+agent.perform_action("left")
+agent.print_status()
+agent.perform_action("suck")
+agent.print_status()
+agent.perform_action("nothing")
+agent.print_status()
+```
+## output
+<img width="685" height="167" alt="image" src="https://github.com/user-attachments/assets/ade6b439-c5f5-40c3-8ce9-be79001a93ef" />
+
+## Result
+ Thus the experiment executed successfully.
